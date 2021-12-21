@@ -1,0 +1,37 @@
+from typing import List
+
+class Solution:
+    def nextPermutation(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        j = len(nums) - 1
+        i = -1
+        
+        while j > 0:
+            i = j - 1
+            if i >= 0 and nums[i] < nums[j]:
+                break               
+            j -= 1
+        
+        if j == 0:
+            self.bubbleSort(0, nums)
+        else:
+            k = len(nums)-1
+            while k > i and nums[k] <= nums[i]:
+                k -= 1
+            nums[k], nums[i] = nums[i], nums[k]
+            self.bubbleSort(j, nums)
+    
+    def bubbleSort(self, idx: int, nums: List[int]) -> None:
+        for i in range(idx, len(nums)-1):
+            for j in range(idx, len(nums)-1-(i-idx)):
+                if (nums[j] >= nums[j+1]):
+                    nums[j], nums[j+1] = nums[j+1], nums[j]
+
+nums = [1,3,2]
+
+sol = Solution()
+sol.nextPermutation(nums)
+
+print(nums)
