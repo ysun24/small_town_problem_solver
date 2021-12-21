@@ -29,9 +29,11 @@ class Solution:
                 if (nums[j] >= nums[j+1]):
                     nums[j], nums[j+1] = nums[j+1], nums[j]
 
-nums = [1,3,2]
-
-sol = Solution()
-sol.nextPermutation(nums)
-
-print(nums)
+'''
+Proof by contradiction:
+Suppose there is another optimal permutation that is smaller than the one written above. In the optimal
+permutation, the very first number different from the original version is j, and the number in this
+position in the original version is i. j must be > i, otherwise the number shrinks. j must had been beh-
+ind i. However, if i was not the peak number, then this permutation must be larger than the permutation
+that was given in my function.
+'''
