@@ -48,6 +48,3 @@ class Solution:
                     
         
         return res
-
-sol = Solution()
-print(sol.fourSum([2] * 5, 8))
