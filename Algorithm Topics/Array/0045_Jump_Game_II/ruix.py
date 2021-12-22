@@ -4,14 +4,17 @@ class Solution:
     def jump(self, nums: List[int]) -> int:
         _n = len(nums)
 
+        # Base conditions.
         if _n <= 1:
             return 0
         if nums[0] >= _n-1:
             return 1
-        
-        current_pos, checked_pos = 0, -1
-        jump_to = current_pos + nums[current_pos]
-        n_steps = 1
+
+        # Checked position is the position before which the current position is the best position to
+        # stand on.
+        current_pos, checked_pos = 0, -1 
+        jump_to = current_pos + nums[current_pos]   # the max index I can jump to from current pos.
+        n_steps = 0 # number of steps I've taken.
 
         while jump_to < _n-1:
             current_pos = self.findNextPos(current_pos, checked_pos, nums)
@@ -19,7 +22,7 @@ class Solution:
             jump_to = current_pos + nums[current_pos]
             n_steps += 1
         
-        return n_steps
+        return n_steps+1
 
     def findNextPos(self, current_pos: int, checked_pos: int, nums: List[int]) -> int:
         # By the iteration conditions of the above function, each time this function
