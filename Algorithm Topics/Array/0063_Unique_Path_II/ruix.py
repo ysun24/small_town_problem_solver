@@ -13,18 +13,14 @@ class Solution:
         # first, handle the right most column of the grid.
         i = m - 2
         while i >= 0:
-            if obstacleGrid[i][n-1] == 1:
-                heur_grid[i][n-1] = 0
-            else:
+            if obstacleGrid[i][n-1] != 1:
                 heur_grid[i][n-1] = heur_grid[i+1][n-1]
             i -= 1
 
         # then, handle the bottom row of the grid.
         j = n - 2
         while j >= 0:
-            if obstacleGrid[m-1][j] == 1:
-                heur_grid[m-1][j] = 0
-            else:
+            if obstacleGrid[m-1][j] != 1:
                 heur_grid[m-1][j] = heur_grid[m-1][j+1]
             j -= 1
 
@@ -33,9 +29,7 @@ class Solution:
         while i >= 0:
             j = n - 2
             while j >= 0:
-                if obstacleGrid[i][j] == 1:
-                    heur_grid[i][j] = 0     # there is an obstacle here.
-                else:
+                if obstacleGrid[i][j] != 1:         # There is not an obestacle here.
                     left_paths = heur_grid[i][j+1]
                     down_paths = heur_grid[i+1][j]
                     heur_grid[i][j] = left_paths + down_paths
