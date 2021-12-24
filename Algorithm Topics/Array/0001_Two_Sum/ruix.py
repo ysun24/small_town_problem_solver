@@ -9,3 +9,8 @@ class Solution:
             else:
                 num_to_idx[nums[i]] = i
         return []
+
+'''
+Use a dictionary to store (nums[i],i) as (key,pair). This is way faster.
+Use hashmap typically accelerates.
+'''
